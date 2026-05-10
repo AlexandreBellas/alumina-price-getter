@@ -4,8 +4,10 @@
 
 A selenium project to obtain Alumina prices automatically.
 
-Gets the Alumina price from the following websites:
+Gets prices from the following websites:
 - [LME Alumina (Platts)](https://www.lme.com/metals/non-ferrous/lme-alumina_)
+- [Metal prices - Aluminum](https://www-old.metal.com/price/Base-Metals/Aluminum)
+- [Metal prices - Titanium](https://www-old.metal.com/price/Minor-Metals/Titanium)
 
 ## Installing dependencies
 
