@@ -1,3 +1,22 @@
 {
-  "python.venvPath": ".venv"
+  "python.venvPath": ".venv",
+  "cursorpyright.analysis.inlayHints.functionReturnTypes": true,
+
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "always"
+    }
+  },
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/__pycache__": true,
+    "**/*.pyc": true
+  }
 }

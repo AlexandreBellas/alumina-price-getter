@@ -5,5 +5,49 @@ description = "Gets the Alumina price from public websites."
 authors = [
     { name = "Alexandre Batistella Bellas", email = "alexandre.bellas@gmail.com" },
 ]
-dependencies = ["selenium", "selenium-stealth", "beautifulsoup4", "requests"]
+dependencies = [
+    "selenium",
+    "selenium-stealth",
+    "beautifulsoup4",
+    "requests",
+    "ruff",
+]
 requires-python = ">=3.13"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.12",
+]
+lint = ["ruff>=0.15.12"]
+
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["ALL"]
+fixable = ["ALL"]
+ignore = [
+    "ANN002",  # `*args` must have a type annotation
+    "ANN003",  # `**kwargs` must have a type annotation
+    "BLE001",  # do not catch blind exception: `Exception`
+    "COM812",  # missing trailing comma
+    "D100",    # missing docstring in public module
+    "D103",    # missing docstring in public function
+    "D104",    # missing docstring in public package
+    "D106",    # missing docstring in public nested class
+    "D107",    # class' `__init__` method must have a docstring
+    "D203",    # incorrect blank line before class docstring
+    "D213",    # multi-line docstring should start at the second line
+    "PLC0415", # `import` should be at the top-level of a file
+    "E731",    # do not assign a lambda expression, use a def
+    "PLR0913", # too many function arguments
+    "PLW0603", # using the global statement to update `variable` is discouraged
+    "T201",    # print found
+    "TRY300",  # consider moving this statement to an `else` block 
+]
+extend-select = []
+extend-ignore = []
+
+[tool.ruff.lint.flake8-annotations] # Copied from `glaut.code-workspace`
+mypy-init-return = true # allow `__init__` methods to not have a return type annotation
