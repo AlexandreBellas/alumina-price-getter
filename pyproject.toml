@@ -1,0 +1,9 @@
+[project]
+name = "alumina-price-getter"
+version = "0.1.0"
+description = "Gets the Alumina price from public websites."
+authors = [
+    { name = "Alexandre Batistella Bellas", email = "alexandre.bellas@gmail.com" },
+]
+dependencies = ["selenium", "selenium-stealth", "beautifulsoup4", "requests"]
+requires-python = ">=3.13"
