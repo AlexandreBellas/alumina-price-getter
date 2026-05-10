@@ -37,13 +37,14 @@ class BasePage(LogMixin, ABC):
             self.debug(f"✅ Page {self.url} opened successfully.")
 
             if save_html:
-                if not Path.exists("snapshots"):
-                    Path.mkdir("snapshots", parents=True)
+                snapshots_dir = Path("snapshots")
+                snapshots_dir.mkdir(parents=True, exist_ok=True)
 
-                with Path.open(
-                    f"snapshots/{self.__class__.__name__}-{datetime.now(timezone(timedelta(hours=-3))).strftime('%Y-%m-%d-%H-%M-%S')}.html",
-                    "w",
-                ) as f:
+                snapshot_path = snapshots_dir / (
+                    f"{self.__class__.__name__}-"
+                    f"{datetime.now(timezone(timedelta(hours=-3))).strftime('%Y-%m-%d-%H-%M-%S')}.html"
+                )
+                with snapshot_path.open("w", encoding="utf-8") as f:
                     f.write(self.driver.page_source)
 
             return True
