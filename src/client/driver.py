@@ -11,7 +11,7 @@ class DriverBuilder:
     @see https://stackoverflow.com/questions/75678008/login-redirects-to-unavilable-when-i-use-selenium
     """
 
-    def __init__(self, *, disable_web_security: bool = False):
+    def __init__(self, *, disable_web_security: bool = False, headless: bool = True):
 
         # Initialize the driver options with arguments that hides the bot presence
         options = webdriver.ChromeOptions()
@@ -25,6 +25,9 @@ class DriverBuilder:
         options.add_argument("--disable-gpu")
         options.add_argument("--disable-extensions")
         options.add_argument("--start-maximized")
+
+        if headless:
+            options.add_argument("--headless")
 
         if disable_web_security:
             options.add_argument("--disable-web-security")
