@@ -1,7 +1,8 @@
 import json
+from json.decoder import JSONDecodeError
 from pathlib import Path
 
-from src.models.credentials import EmailCredentials
+from src.models.credentials import GoogleSheetsCredentials
 from src.validators.credentials import CredentialsValidator
 
 
@@ -16,17 +17,21 @@ class Credentials:
 
         # Load credentials from file
         with Path.open("credentials.json") as f:
-            credentials = json.load(f)
+            try:
+                credentials = json.load(f)
 
-            # Validate file is a dictionary
-            if not isinstance(credentials, dict):
-                message = "Credentials must be a dictionary"
-                raise TypeError(message)
+                # Validate file is a dictionary
+                if not isinstance(credentials, dict):
+                    message = "Credentials must be a dictionary"
+                    raise TypeError(message)
 
-            # Validate "email" presence
-            if "email" not in credentials:
-                message = "Credentials must contain 'email'"
-                raise ValueError(message)
+                # Validate "google_sheets" presence
+                if "google_sheets" not in credentials:
+                    message = "Credentials must contain 'google_sheets'"
+                    raise ValueError(message)
 
-            # Create email credentials
-            self.email = self.validator.validate(EmailCredentials, credentials["email"])
+                # Create google sheets credentials
+                self.google_sheets = self.validator.validate(GoogleSheetsCredentials, credentials["google_sheets"])
+            except JSONDecodeError as e:
+                message = "Credentials file (credentials.json) does not have a valid JSON format."
+                raise TypeError(message) from e

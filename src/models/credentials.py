@@ -1,13 +1,9 @@
 from dataclasses import dataclass
-from typing import Literal
 
 
 @dataclass
-class EmailCredentials:
-    """Email credentials class."""
+class GoogleSheetsCredentials:
+    """Google Sheets credentials class."""
 
-    server: str
-    port: int
-    protocol: Literal["imap", "pop3"]
-    login: str
-    password: str
+    endpoint: str
+    token: str
