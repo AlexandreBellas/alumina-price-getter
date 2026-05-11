@@ -23,7 +23,7 @@ try:
     lme_page.open()
 
     # Get the price of the alumina
-    prices["lme"] = lme_page.get_price()
+    prices["LME Alumina (Platts)"] = lme_page.get_price()
 
     # Open the Metal Aluminum page
     metal_al_page = MetalAluminumPage(driver)
