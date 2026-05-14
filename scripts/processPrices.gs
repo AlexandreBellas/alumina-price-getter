@@ -73,7 +73,7 @@ function processPrices(prices) {
     const newRow = [todayStr];
     for (let c = 1; c < headerRow.length; c++) {
         const label = String(headerRow[c] ?? "").trim();
-        newRow.push(label ? (priceMap.get(label) ?? "") : "");
+        newRow.push(label ? (priceMap.get(label)?.replace(",", "")?.replace(".", ",") ?? "") : "");
     }
 
     sheet.appendRow(newRow);
